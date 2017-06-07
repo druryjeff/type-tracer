@@ -1,0 +1,19 @@
+/* LAYOUT STYLES */
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    background: url(../img/board.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/* JS UTILITIES */
+
+.js-hide {
+  display: none;
+}

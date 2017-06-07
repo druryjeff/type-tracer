@@ -1,0 +1,75 @@
+.letters {
+    position: relative;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.letters svg {
+    width: 25%; // 4
+    padding: $space;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width:37.5em){
+    .letters svg {
+        width: 14.28571428571429%; // 7
+    }
+}
+
+@media screen and (min-width:67.5em){
+    .letters svg {
+        width: 10%; // 10
+    }
+}
+
+/* COMMON SVG LETTER STYLES */
+
+.letters path {
+    display: block;
+    fill: rgba(0,0,0,.1);
+    stroke: #fff;
+    stroke-width: 2;
+    animation: dash 2s ease-in forwards;
+}
+
+
+/* COMMON ANIMATION */
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* SASS LOOP TO CREATE INDIVIDUAL LETTER ANIMATIONS AND HOVERS */
+
+$letters: a b c d e f g h i j k l m n o p q r s t u v w x y z;
+$dashes: 446 401 543 349 639 436 617 398 537 259 495 393 642 580 491 707 500 459 470 368 494 470 455 647 322 1020;
+
+@for $i from 1 through length($letters) {
+
+    ##{nth($letters, $i)} {
+        stroke-dasharray: nth($dashes, $i);
+        stroke-dashoffset: nth($dashes, $i);
+        animation-delay: random(10)+s; // set random delay to stagger display of letters
+        transition: fill .4s;
+    }
+
+    ##{nth($letters, $i)}:hover {
+        cursor: pointer;
+        animation: hoverDash_#{nth($letters, $i)} 1s ease-in forwards;
+        fill: rgba(0,0,0,.4);
+    }
+
+    @keyframes hoverDash_#{nth($letters, $i)} {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: nth($dashes, $i); }
+    }
+
+}
