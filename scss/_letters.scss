@@ -57,7 +57,7 @@ $dashes: 446 401 543 349 639 436 617 398 537 259 495 393 642 580 491 707 500 459
     ##{nth($letters, $i)} {
         stroke-dasharray: nth($dashes, $i);
         stroke-dashoffset: nth($dashes, $i);
-        animation-delay: random(10)+s; // set random delay to stagger display of letters
+        animation-delay: random(5)+s; // set random delay to stagger display of letters
         transition: fill .4s;
     }
 
